@@ -53,14 +53,12 @@ final class AppDelegate: NSObject, NSApplicationDelegate {
         updatedItem.isEnabled = false
         menu.addItem(updatedItem)
 
+        let refreshItem = NSMenuItem(title: "Refresh Now", action: #selector(refreshTapped), keyEquivalent: "r")
+        refreshItem.target = self
         menu.addItem(NSMenuItem.separator())
-        menu.addItem(NSMenuItem(title: "Refresh Now", action: #selector(refreshTapped), keyEquivalent: "r"))
+        menu.addItem(refreshItem)
         menu.addItem(NSMenuItem.separator())
         menu.addItem(NSMenuItem(title: "Quit Whereabouts", action: #selector(NSApplication.terminate(_:)), keyEquivalent: "q"))
-
-        for item in menu.items {
-            item.target = self
-        }
 
         statusItem.menu = menu
     }
