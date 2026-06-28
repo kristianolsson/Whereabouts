@@ -17,6 +17,16 @@ Click the flag in the menu bar to see:
 - Last updated time
 - **Refresh Now** — manual re-lookup
 
+## Installation
+
+1. Download `Whereabouts-0.1.dmg` from [Releases](https://github.com/kristianolsson/Whereabouts/releases)
+2. Open the DMG and drag `Whereabouts.app` to your Applications folder
+3. If macOS says the app is damaged, run:
+   ```bash
+   xattr -cr /Applications/Whereabouts.app
+   ```
+4. Launch Whereabouts — the flag appears in your menu bar
+
 ## Requirements
 
 - macOS 13 Ventura or later
