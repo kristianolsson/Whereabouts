@@ -4,7 +4,7 @@ import Network
 final class NetworkMonitor {
 
     private let monitor = NWPathMonitor()
-    private let queue = DispatchQueue(label: "com.kristian.whereabouts.netmonitor")
+    private let queue = DispatchQueue(label: "com.kristianolsson.whereabouts.netmonitor")
     private var debounceTask: Task<Void, Never>?
 
     var onPathChanged: (() -> Void)?

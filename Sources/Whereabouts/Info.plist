@@ -3,7 +3,7 @@
 <plist version="1.0">
 <dict>
     <key>CFBundleIdentifier</key>
-    <string>com.kristian.whereabouts</string>
+    <string>com.kristianolsson.whereabouts</string>
     <key>CFBundleName</key>
     <string>Whereabouts</string>
     <key>CFBundleDisplayName</key>
