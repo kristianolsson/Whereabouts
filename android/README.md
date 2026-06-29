@@ -2,22 +2,23 @@
 
 Shows a persistent country flag emoji in the Android status bar, matching the
 country of the device's current public IP address. When you connect or
-disconnect a VPN the flag updates automatically (within ~1.5 s).
+disconnect a VPN the flag updates automatically (within ~5 s).
 
 ## How it works
 
 | Component | Role |
 |---|---|
-| `FlagService` | Foreground Service — holds the ongoing notification, registers a `ConnectivityManager.NetworkCallback`, debounces network changes (1.5 s), then calls the geo APIs |
-| `NetworkMonitor` | Wraps `NetworkCallback`; fires on every `onAvailable`/`onLost` event (catches VPN changes) |
+| `FlagService` | Foreground Service — holds the ongoing notification, registers a `BroadcastReceiver` for `CONNECTIVITY_ACTION`, debounces network changes (5 s), then calls the geo APIs |
+| `NetworkMonitor` | `BroadcastReceiver` for `ConnectivityManager.CONNECTIVITY_ACTION`; more reliable than `NetworkCallback` on Samsung devices in background |
 | `GeoLocator` | HTTP GET → `https://ipinfo.io/json`, fallback to `http://ip-api.com/json`; no API key needed |
 | `FlagEmoji` | ISO 3166-1 alpha-2 code → Unicode flag emoji via Regional Indicator Symbols |
 | `BootReceiver` | Restarts `FlagService` on `ACTION_BOOT_COMPLETED` |
 | `Prefs` | SharedPreferences cache: persists last country code / IP so the correct flag appears instantly on restart |
-| `MainActivity` | Shows current flag, IP, country code, last-updated time, and a Refresh button |
+| `MainActivity` | Shows current flag, IP, country code, last-updated time, on/off toggle, and a Refresh button |
 
 An `AlarmManager` backstop re-runs geolocation every 30 minutes in case a
-network event is missed.
+network event is missed. If the initial lookup fails (network not yet settled),
+it retries up to 3 times at 8-second intervals.
 
 ## Requirements
 
