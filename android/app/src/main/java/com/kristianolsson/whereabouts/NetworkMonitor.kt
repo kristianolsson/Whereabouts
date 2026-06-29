@@ -3,13 +3,16 @@ package com.kristianolsson.whereabouts
 import android.content.Context
 import android.net.ConnectivityManager
 import android.net.Network
-import android.net.NetworkCapabilities
-import android.net.NetworkRequest
+import android.os.Build
+import android.os.Handler
+import android.os.Looper
 import android.util.Log
 
 /**
- * Registers a ConnectivityManager.NetworkCallback that fires [onNetworkChange] whenever
- * any network becomes available or is lost (covers VPN connect/disconnect).
+ * Watches the device's default network using registerDefaultNetworkCallback.
+ * This fires when the active network changes — WiFi switch, VPN connect/disconnect —
+ * which is exactly when the public IP may have changed. More reliable than
+ * registerNetworkCallback on Samsung devices.
  */
 class NetworkMonitor(
     context: Context,
@@ -17,29 +20,30 @@ class NetworkMonitor(
 ) {
     private val TAG = "NetworkMonitor"
     private val cm = context.getSystemService(ConnectivityManager::class.java)
+    private val handler = Handler(Looper.getMainLooper())
 
     private val callback = object : ConnectivityManager.NetworkCallback() {
         override fun onAvailable(network: Network) {
-            Log.d(TAG, "Network available: $network")
+            Log.d(TAG, "Default network available: $network")
             onNetworkChange()
         }
 
         override fun onLost(network: Network) {
-            Log.d(TAG, "Network lost: $network")
+            Log.d(TAG, "Default network lost: $network")
             onNetworkChange()
         }
     }
 
     fun register() {
-        val request = NetworkRequest.Builder()
-            .addCapability(NetworkCapabilities.NET_CAPABILITY_INTERNET)
-            .addCapability(NetworkCapabilities.NET_CAPABILITY_VALIDATED)
-            .build()
         try {
-            cm.registerNetworkCallback(request, callback)
-            Log.d(TAG, "NetworkCallback registered")
+            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.S) {
+                cm.registerDefaultNetworkCallback(callback, handler)
+            } else {
+                cm.registerDefaultNetworkCallback(callback)
+            }
+            Log.d(TAG, "Default network callback registered")
         } catch (e: Exception) {
-            Log.w(TAG, "Failed to register NetworkCallback: ${e.message}")
+            Log.w(TAG, "Failed to register network callback: ${e.message}")
         }
     }
 
