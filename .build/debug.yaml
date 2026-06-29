@@ -1,0 +1,81 @@
+client:
+  name: basic
+  file-system: device-agnostic
+tools: {}
+targets:
+  "PackageStructure": ["<PackageStructure>"]
+  "Whereabouts-arm64-apple-macosx15.0-debug.exe": ["<Whereabouts-arm64-apple-macosx15.0-debug.exe>"]
+  "Whereabouts-arm64-apple-macosx15.0-debug.module": ["<Whereabouts-arm64-apple-macosx15.0-debug.module>"]
+  "main": ["<Whereabouts-arm64-apple-macosx15.0-debug.exe>","<Whereabouts-arm64-apple-macosx15.0-debug.module>"]
+  "test": ["<Whereabouts-arm64-apple-macosx15.0-debug.exe>","<Whereabouts-arm64-apple-macosx15.0-debug.module>"]
+default: "main"
+nodes:
+  "/Users/kristianolsson/Documents/code/Whereabouts/Sources/Whereabouts/":
+    is-directory-structure: true
+    content-exclusion-patterns: [".git",".build"]
+  "/Users/kristianolsson/Documents/code/Whereabouts/.build/arm64-apple-macosx/debug/Whereabouts":
+    is-mutated: true
+commands:
+  "/Users/kristianolsson/Documents/code/Whereabouts/.build/arm64-apple-macosx/debug/Whereabouts-entitlement.plist":
+    tool: write-auxiliary-file
+    inputs: ["<entitlement-plist>","<com.apple.security.get-task-allow>"]
+    outputs: ["/Users/kristianolsson/Documents/code/Whereabouts/.build/arm64-apple-macosx/debug/Whereabouts-entitlement.plist"]
+    description: "Write auxiliary file /Users/kristianolsson/Documents/code/Whereabouts/.build/arm64-apple-macosx/debug/Whereabouts-entitlement.plist"
+
+  "/Users/kristianolsson/Documents/code/Whereabouts/.build/arm64-apple-macosx/debug/Whereabouts.build/sources":
+    tool: write-auxiliary-file
+    inputs: ["<sources-file-list>","/Users/kristianolsson/Documents/code/Whereabouts/Sources/Whereabouts/AppDelegate.swift","/Users/kristianolsson/Documents/code/Whereabouts/Sources/Whereabouts/FlagEmoji.swift","/Users/kristianolsson/Documents/code/Whereabouts/Sources/Whereabouts/GeoLocator.swift","/Users/kristianolsson/Documents/code/Whereabouts/Sources/Whereabouts/NetworkMonitor.swift","/Users/kristianolsson/Documents/code/Whereabouts/Sources/Whereabouts/main.swift"]
+    outputs: ["/Users/kristianolsson/Documents/code/Whereabouts/.build/arm64-apple-macosx/debug/Whereabouts.build/sources"]
+    description: "Write auxiliary file /Users/kristianolsson/Documents/code/Whereabouts/.build/arm64-apple-macosx/debug/Whereabouts.build/sources"
+
+  "/Users/kristianolsson/Documents/code/Whereabouts/.build/arm64-apple-macosx/debug/Whereabouts.product/Objects.LinkFileList":
+    tool: write-auxiliary-file
+    inputs: ["<link-file-list>","/Users/kristianolsson/Documents/code/Whereabouts/.build/arm64-apple-macosx/debug/Whereabouts.build/AppDelegate.swift.o","/Users/kristianolsson/Documents/code/Whereabouts/.build/arm64-apple-macosx/debug/Whereabouts.build/FlagEmoji.swift.o","/Users/kristianolsson/Documents/code/Whereabouts/.build/arm64-apple-macosx/debug/Whereabouts.build/GeoLocator.swift.o","/Users/kristianolsson/Documents/code/Whereabouts/.build/arm64-apple-macosx/debug/Whereabouts.build/NetworkMonitor.swift.o","/Users/kristianolsson/Documents/code/Whereabouts/.build/arm64-apple-macosx/debug/Whereabouts.build/main.swift.o"]
+    outputs: ["/Users/kristianolsson/Documents/code/Whereabouts/.build/arm64-apple-macosx/debug/Whereabouts.product/Objects.LinkFileList"]
+    description: "Write auxiliary file /Users/kristianolsson/Documents/code/Whereabouts/.build/arm64-apple-macosx/debug/Whereabouts.product/Objects.LinkFileList"
+
+  "/Users/kristianolsson/Documents/code/Whereabouts/.build/arm64-apple-macosx/debug/swift-version--1AB21518FC5DEDBE.txt":
+    tool: write-auxiliary-file
+    inputs: ["<swift-get-version>","/Library/Developer/CommandLineTools/usr/bin/swiftc"]
+    outputs: ["/Users/kristianolsson/Documents/code/Whereabouts/.build/arm64-apple-macosx/debug/swift-version--1AB21518FC5DEDBE.txt"]
+    always-out-of-date: "true"
+    description: "Write auxiliary file /Users/kristianolsson/Documents/code/Whereabouts/.build/arm64-apple-macosx/debug/swift-version--1AB21518FC5DEDBE.txt"
+
+  "<Whereabouts-arm64-apple-macosx15.0-debug.exe>":
+    tool: phony
+    inputs: ["<Whereabouts-arm64-apple-macosx15.0-debug.exe-CodeSigning>"]
+    outputs: ["<Whereabouts-arm64-apple-macosx15.0-debug.exe>"]
+
+  "<Whereabouts-arm64-apple-macosx15.0-debug.module>":
+    tool: phony
+    inputs: ["/Users/kristianolsson/Documents/code/Whereabouts/.build/arm64-apple-macosx/debug/Whereabouts.build/AppDelegate.swift.o","/Users/kristianolsson/Documents/code/Whereabouts/.build/arm64-apple-macosx/debug/Whereabouts.build/FlagEmoji.swift.o","/Users/kristianolsson/Documents/code/Whereabouts/.build/arm64-apple-macosx/debug/Whereabouts.build/GeoLocator.swift.o","/Users/kristianolsson/Documents/code/Whereabouts/.build/arm64-apple-macosx/debug/Whereabouts.build/NetworkMonitor.swift.o","/Users/kristianolsson/Documents/code/Whereabouts/.build/arm64-apple-macosx/debug/Whereabouts.build/main.swift.o","/Users/kristianolsson/Documents/code/Whereabouts/.build/arm64-apple-macosx/debug/Modules/Whereabouts.swiftmodule"]
+    outputs: ["<Whereabouts-arm64-apple-macosx15.0-debug.module>"]
+
+  "C.Whereabouts-arm64-apple-macosx15.0-debug.exe":
+    tool: shell
+    inputs: ["/Users/kristianolsson/Documents/code/Whereabouts/.build/arm64-apple-macosx/debug/Whereabouts.build/AppDelegate.swift.o","/Users/kristianolsson/Documents/code/Whereabouts/.build/arm64-apple-macosx/debug/Whereabouts.build/FlagEmoji.swift.o","/Users/kristianolsson/Documents/code/Whereabouts/.build/arm64-apple-macosx/debug/Whereabouts.build/GeoLocator.swift.o","/Users/kristianolsson/Documents/code/Whereabouts/.build/arm64-apple-macosx/debug/Whereabouts.build/NetworkMonitor.swift.o","/Users/kristianolsson/Documents/code/Whereabouts/.build/arm64-apple-macosx/debug/Whereabouts.build/main.swift.o","/Users/kristianolsson/Documents/code/Whereabouts/.build/arm64-apple-macosx/debug/Whereabouts.product/Objects.LinkFileList"]
+    outputs: ["/Users/kristianolsson/Documents/code/Whereabouts/.build/arm64-apple-macosx/debug/Whereabouts"]
+    description: "Linking ./.build/arm64-apple-macosx/debug/Whereabouts"
+    args: ["/Library/Developer/CommandLineTools/usr/bin/swiftc","-L","/Users/kristianolsson/Documents/code/Whereabouts/.build/arm64-apple-macosx/debug","-o","/Users/kristianolsson/Documents/code/Whereabouts/.build/arm64-apple-macosx/debug/Whereabouts","-module-name","Whereabouts","-Xlinker","-no_warn_duplicate_libraries","-emit-executable","-Xlinker","-alias","-Xlinker","_Whereabouts_main","-Xlinker","_main","-Xlinker","-rpath","-Xlinker","@loader_path","@/Users/kristianolsson/Documents/code/Whereabouts/.build/arm64-apple-macosx/debug/Whereabouts.product/Objects.LinkFileList","-target","arm64-apple-macosx13.0","-Xlinker","-add_ast_path","-Xlinker","/Users/kristianolsson/Documents/code/Whereabouts/.build/arm64-apple-macosx/debug/Modules/Whereabouts.swiftmodule","-F","/Library/Developer/CommandLineTools/Library/Developer/Frameworks","-sdk","/Library/Developer/CommandLineTools/SDKs/MacOSX.sdk","-g","-Xlinker","-rpath","-Xlinker","/Library/Developer/CommandLineTools/Library/Developer/Frameworks"]
+
+  "C.Whereabouts-arm64-apple-macosx15.0-debug.exe-entitlements":
+    tool: shell
+    inputs: ["/Users/kristianolsson/Documents/code/Whereabouts/.build/arm64-apple-macosx/debug/Whereabouts","/Users/kristianolsson/Documents/code/Whereabouts/.build/arm64-apple-macosx/debug/Whereabouts-entitlement.plist"]
+    outputs: ["<Whereabouts-arm64-apple-macosx15.0-debug.exe-CodeSigning>"]
+    description: "Applying debug entitlements to ./.build/arm64-apple-macosx/debug/Whereabouts"
+    args: ["codesign","--force","--sign","-","--entitlements","/Users/kristianolsson/Documents/code/Whereabouts/.build/arm64-apple-macosx/debug/Whereabouts-entitlement.plist","/Users/kristianolsson/Documents/code/Whereabouts/.build/arm64-apple-macosx/debug/Whereabouts"]
+
+  "C.Whereabouts-arm64-apple-macosx15.0-debug.module":
+    tool: shell
+    inputs: ["/Users/kristianolsson/Documents/code/Whereabouts/Sources/Whereabouts/AppDelegate.swift","/Users/kristianolsson/Documents/code/Whereabouts/Sources/Whereabouts/FlagEmoji.swift","/Users/kristianolsson/Documents/code/Whereabouts/Sources/Whereabouts/GeoLocator.swift","/Users/kristianolsson/Documents/code/Whereabouts/Sources/Whereabouts/NetworkMonitor.swift","/Users/kristianolsson/Documents/code/Whereabouts/Sources/Whereabouts/main.swift","/Users/kristianolsson/Documents/code/Whereabouts/.build/arm64-apple-macosx/debug/swift-version--1AB21518FC5DEDBE.txt","/Users/kristianolsson/Documents/code/Whereabouts/.build/arm64-apple-macosx/debug/Whereabouts.build/sources"]
+    outputs: ["/Users/kristianolsson/Documents/code/Whereabouts/.build/arm64-apple-macosx/debug/Whereabouts.build/AppDelegate.swift.o","/Users/kristianolsson/Documents/code/Whereabouts/.build/arm64-apple-macosx/debug/Whereabouts.build/FlagEmoji.swift.o","/Users/kristianolsson/Documents/code/Whereabouts/.build/arm64-apple-macosx/debug/Whereabouts.build/GeoLocator.swift.o","/Users/kristianolsson/Documents/code/Whereabouts/.build/arm64-apple-macosx/debug/Whereabouts.build/NetworkMonitor.swift.o","/Users/kristianolsson/Documents/code/Whereabouts/.build/arm64-apple-macosx/debug/Whereabouts.build/main.swift.o","/Users/kristianolsson/Documents/code/Whereabouts/.build/arm64-apple-macosx/debug/Modules/Whereabouts.swiftmodule"]
+    description: "Compiling Swift Module 'Whereabouts' (5 sources)"
+    args: ["/Library/Developer/CommandLineTools/usr/bin/swiftc","-module-name","Whereabouts","-emit-dependencies","-emit-module","-emit-module-path","/Users/kristianolsson/Documents/code/Whereabouts/.build/arm64-apple-macosx/debug/Modules/Whereabouts.swiftmodule","-output-file-map","/Users/kristianolsson/Documents/code/Whereabouts/.build/arm64-apple-macosx/debug/Whereabouts.build/output-file-map.json","-incremental","-c","@/Users/kristianolsson/Documents/code/Whereabouts/.build/arm64-apple-macosx/debug/Whereabouts.build/sources","-I","/Users/kristianolsson/Documents/code/Whereabouts/.build/arm64-apple-macosx/debug/Modules","-target","arm64-apple-macosx13.0","-enable-batch-mode","-index-store-path","/Users/kristianolsson/Documents/code/Whereabouts/.build/arm64-apple-macosx/debug/index/store","-Onone","-enable-testing","-j10","-DSWIFT_PACKAGE","-DDEBUG","-module-cache-path","/Users/kristianolsson/Documents/code/Whereabouts/.build/arm64-apple-macosx/debug/ModuleCache","-parseable-output","-Xfrontend","-entry-point-function-name","-Xfrontend","Whereabouts_main","-swift-version","5","-F","/Library/Developer/CommandLineTools/Library/Developer/Frameworks","-sdk","/Library/Developer/CommandLineTools/SDKs/MacOSX.sdk","-g","-Xcc","-isysroot","-Xcc","/Library/Developer/CommandLineTools/SDKs/MacOSX.sdk","-Xcc","-fPIC","-Xcc","-g","-package-name","whereabouts"]
+
+  "PackageStructure":
+    tool: package-structure-tool
+    inputs: ["/Users/kristianolsson/Documents/code/Whereabouts/Sources/Whereabouts/","/Users/kristianolsson/Documents/code/Whereabouts/Package.swift","/Users/kristianolsson/Documents/code/Whereabouts/Package.resolved"]
+    outputs: ["<PackageStructure>"]
+    description: "Planning build"
+    allow-missing-inputs: true
+

@@ -9,22 +9,13 @@ import android.content.pm.PackageManager
 import android.os.Build
 import android.os.Bundle
 import android.widget.Button
+import android.widget.Switch
 import android.widget.TextView
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.appcompat.app.AppCompatActivity
 import java.text.DateFormat
 import java.util.Date
 
-/**
- * Simple UI that shows the current flag, IP, country code, and last-updated time.
- *
- * The UI refreshes via:
- *  - onResume (reads SharedPreferences)
- *  - a dynamic BroadcastReceiver that FlagService fires after each geo lookup
- *
- * The Refresh button starts/re-pings FlagService which immediately triggers a
- * new geo lookup (bypassing the 1.5 s debounce on first call from MainActivity).
- */
 class MainActivity : AppCompatActivity() {
 
     private lateinit var textFlag: TextView
@@ -32,24 +23,34 @@ class MainActivity : AppCompatActivity() {
     private lateinit var textIp: TextView
     private lateinit var textLastUpdated: TextView
     private lateinit var btnRefresh: Button
+    private lateinit var enableSwitch: Switch
 
-    // Receives broadcasts from FlagService while this activity is visible.
     private val updateReceiver = object : BroadcastReceiver() {
-        override fun onReceive(context: Context?, intent: Intent?) {
-            refreshUi()
-        }
+        override fun onReceive(context: Context?, intent: Intent?) { refreshUi() }
     }
 
-    // Handles POST_NOTIFICATIONS permission on Android 13+.
     private val notificationPermLauncher =
-        registerForActivityResult(ActivityResultContracts.RequestPermission()) { _ ->
-            // Start regardless of outcome; service handles missing permission gracefully.
-            startFlagService()
+        registerForActivityResult(ActivityResultContracts.RequestPermission()) { granted ->
+            if (granted) {
+                startFlagService()
+            } else {
+                // Revert switch without triggering the listener
+                enableSwitch.setOnCheckedChangeListener(null)
+                enableSwitch.isChecked = false
+                Prefs.setServiceEnabled(this, false)
+                enableSwitch.setOnCheckedChangeListener(switchListener)
+            }
         }
 
-    // -------------------------------------------------------------------------
-    // Lifecycle
-    // -------------------------------------------------------------------------
+    private val switchListener = { _: android.widget.CompoundButton, isChecked: Boolean ->
+        Prefs.setServiceEnabled(this, isChecked)
+        if (isChecked) {
+            requestNotificationPermAndStart()
+        } else {
+            stopService(Intent(this, FlagService::class.java))
+        }
+        Unit
+    }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -60,15 +61,16 @@ class MainActivity : AppCompatActivity() {
         textIp = findViewById(R.id.textIp)
         textLastUpdated = findViewById(R.id.textLastUpdated)
         btnRefresh = findViewById(R.id.btnRefresh)
+        enableSwitch = findViewById(R.id.switchEnable)
+
+        enableSwitch.isChecked = Prefs.isServiceEnabled(this)
+        enableSwitch.setOnCheckedChangeListener(switchListener)
 
         btnRefresh.setOnClickListener {
             it.isEnabled = false
             startFlagService()
-            // Re-enable after a short wait so users can't spam taps
             it.postDelayed({ it.isEnabled = true }, 2_000)
         }
-
-        requestNotificationPermAndStart()
     }
 
     override fun onResume() {
@@ -88,10 +90,6 @@ class MainActivity : AppCompatActivity() {
         try { unregisterReceiver(updateReceiver) } catch (_: Exception) { }
     }
 
-    // -------------------------------------------------------------------------
-    // UI
-    // -------------------------------------------------------------------------
-
     private fun refreshUi() {
         val code = Prefs.getCountryCode(this)
         val ip = Prefs.getIp(this)
@@ -101,23 +99,15 @@ class MainActivity : AppCompatActivity() {
         textCountry.text = if (code.isNotEmpty()) code else getString(R.string.unknown)
         textIp.text = ip.ifEmpty { "—" }
         textLastUpdated.text = if (ts > 0L) {
-            getString(
-                R.string.last_updated,
-                DateFormat.getTimeInstance(DateFormat.SHORT).format(Date(ts))
-            )
+            getString(R.string.last_updated, DateFormat.getTimeInstance(DateFormat.SHORT).format(Date(ts)))
         } else {
             getString(R.string.not_yet_updated)
         }
     }
 
-    // -------------------------------------------------------------------------
-    // Service
-    // -------------------------------------------------------------------------
-
     private fun requestNotificationPermAndStart() {
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.TIRAMISU &&
-            checkSelfPermission(Manifest.permission.POST_NOTIFICATIONS)
-            != PackageManager.PERMISSION_GRANTED
+            checkSelfPermission(Manifest.permission.POST_NOTIFICATIONS) != PackageManager.PERMISSION_GRANTED
         ) {
             notificationPermLauncher.launch(Manifest.permission.POST_NOTIFICATIONS)
         } else {

@@ -1,0 +1,10 @@
+version: "Apple Swift version 6.1.2 (swiftlang-6.1.2.1.2 clang-1700.0.13.5)"
+options: "c71630f1d0e0bef3554851f0cf49b415129f75869b657e061866acb61e37465d"
+build_start_time: [1782677286, 943987000]
+build_end_time: [1782677287, 721659000]
+inputs:
+  "/Users/kristianolsson/Documents/code/Whereabouts/Sources/Whereabouts/AppDelegate.swift": [1782676473, 583832578]
+  "/Users/kristianolsson/Documents/code/Whereabouts/Sources/Whereabouts/FlagEmoji.swift": [1782002511, 12074900]
+  "/Users/kristianolsson/Documents/code/Whereabouts/Sources/Whereabouts/GeoLocator.swift": [1782002517, 867609447]
+  "/Users/kristianolsson/Documents/code/Whereabouts/Sources/Whereabouts/NetworkMonitor.swift": [1782677272, 102011329]
+  "/Users/kristianolsson/Documents/code/Whereabouts/Sources/Whereabouts/main.swift": [1782002542, 230179238]

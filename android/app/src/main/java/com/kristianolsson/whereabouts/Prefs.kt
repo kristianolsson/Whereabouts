@@ -11,6 +11,7 @@ object Prefs {
     private const val KEY_COUNTRY_CODE = "country_code"
     private const val KEY_IP = "ip"
     private const val KEY_LAST_UPDATED = "last_updated"
+    private const val KEY_SERVICE_ENABLED = "service_enabled"
 
     fun save(context: Context, countryCode: String, ip: String) {
         context.getSharedPreferences(PREF_FILE, Context.MODE_PRIVATE).edit()
@@ -31,4 +32,14 @@ object Prefs {
     fun getLastUpdated(context: Context): Long =
         context.getSharedPreferences(PREF_FILE, Context.MODE_PRIVATE)
             .getLong(KEY_LAST_UPDATED, 0L)
+
+    fun isServiceEnabled(context: Context): Boolean =
+        context.getSharedPreferences(PREF_FILE, Context.MODE_PRIVATE)
+            .getBoolean(KEY_SERVICE_ENABLED, false)
+
+    fun setServiceEnabled(context: Context, enabled: Boolean) {
+        context.getSharedPreferences(PREF_FILE, Context.MODE_PRIVATE).edit()
+            .putBoolean(KEY_SERVICE_ENABLED, enabled)
+            .apply()
+    }
 }

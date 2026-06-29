@@ -1,0 +1,278 @@
+{
+  "builtTestProducts" : [
+
+  ],
+  "copyCommands" : {
+
+  },
+  "explicitTargetDependencyImportCheckingMode" : {
+    "none" : {
+
+    }
+  },
+  "generatedSourceTargetSet" : [
+
+  ],
+  "pluginDescriptions" : [
+
+  ],
+  "swiftCommands" : {
+    "C.Whereabouts-arm64-apple-macosx15.0-release.module" : {
+      "executable" : "/Library/Developer/CommandLineTools/usr/bin/swiftc",
+      "fileList" : "/Users/kristianolsson/Documents/code/Whereabouts/.build/arm64-apple-macosx/release/Whereabouts.build/sources",
+      "importPath" : "/Users/kristianolsson/Documents/code/Whereabouts/.build/arm64-apple-macosx/release/Modules",
+      "inputs" : [
+        {
+          "kind" : "file",
+          "name" : "/Users/kristianolsson/Documents/code/Whereabouts/Sources/Whereabouts/AppDelegate.swift"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/kristianolsson/Documents/code/Whereabouts/Sources/Whereabouts/FlagEmoji.swift"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/kristianolsson/Documents/code/Whereabouts/Sources/Whereabouts/GeoLocator.swift"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/kristianolsson/Documents/code/Whereabouts/Sources/Whereabouts/NetworkMonitor.swift"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/kristianolsson/Documents/code/Whereabouts/Sources/Whereabouts/main.swift"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/kristianolsson/Documents/code/Whereabouts/.build/arm64-apple-macosx/release/swift-version--1AB21518FC5DEDBE.txt"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/kristianolsson/Documents/code/Whereabouts/.build/arm64-apple-macosx/release/Whereabouts.build/sources"
+        }
+      ],
+      "isLibrary" : false,
+      "moduleName" : "Whereabouts",
+      "moduleOutputPath" : "/Users/kristianolsson/Documents/code/Whereabouts/.build/arm64-apple-macosx/release/Modules/Whereabouts.swiftmodule",
+      "objects" : [
+        "/Users/kristianolsson/Documents/code/Whereabouts/.build/arm64-apple-macosx/release/Whereabouts.build/AppDelegate.swift.o",
+        "/Users/kristianolsson/Documents/code/Whereabouts/.build/arm64-apple-macosx/release/Whereabouts.build/FlagEmoji.swift.o",
+        "/Users/kristianolsson/Documents/code/Whereabouts/.build/arm64-apple-macosx/release/Whereabouts.build/GeoLocator.swift.o",
+        "/Users/kristianolsson/Documents/code/Whereabouts/.build/arm64-apple-macosx/release/Whereabouts.build/NetworkMonitor.swift.o",
+        "/Users/kristianolsson/Documents/code/Whereabouts/.build/arm64-apple-macosx/release/Whereabouts.build/main.swift.o"
+      ],
+      "otherArguments" : [
+        "-target",
+        "arm64-apple-macosx13.0",
+        "-O",
+        "-j10",
+        "-DSWIFT_PACKAGE",
+        "-module-cache-path",
+        "/Users/kristianolsson/Documents/code/Whereabouts/.build/arm64-apple-macosx/release/ModuleCache",
+        "-parseable-output",
+        "-Xfrontend",
+        "-entry-point-function-name",
+        "-Xfrontend",
+        "Whereabouts_main",
+        "-swift-version",
+        "5",
+        "-F",
+        "/Library/Developer/CommandLineTools/Library/Developer/Frameworks",
+        "-sdk",
+        "/Library/Developer/CommandLineTools/SDKs/MacOSX.sdk",
+        "-g",
+        "-Xcc",
+        "-isysroot",
+        "-Xcc",
+        "/Library/Developer/CommandLineTools/SDKs/MacOSX.sdk",
+        "-Xcc",
+        "-fPIC",
+        "-Xcc",
+        "-g",
+        "-package-name",
+        "whereabouts"
+      ],
+      "outputFileMapPath" : "/Users/kristianolsson/Documents/code/Whereabouts/.build/arm64-apple-macosx/release/Whereabouts.build/output-file-map.json",
+      "outputs" : [
+        {
+          "kind" : "file",
+          "name" : "/Users/kristianolsson/Documents/code/Whereabouts/.build/arm64-apple-macosx/release/Whereabouts.build/AppDelegate.swift.o"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/kristianolsson/Documents/code/Whereabouts/.build/arm64-apple-macosx/release/Whereabouts.build/FlagEmoji.swift.o"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/kristianolsson/Documents/code/Whereabouts/.build/arm64-apple-macosx/release/Whereabouts.build/GeoLocator.swift.o"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/kristianolsson/Documents/code/Whereabouts/.build/arm64-apple-macosx/release/Whereabouts.build/NetworkMonitor.swift.o"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/kristianolsson/Documents/code/Whereabouts/.build/arm64-apple-macosx/release/Whereabouts.build/main.swift.o"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/kristianolsson/Documents/code/Whereabouts/.build/arm64-apple-macosx/release/Modules/Whereabouts.swiftmodule"
+        }
+      ],
+      "prepareForIndexing" : false,
+      "sources" : [
+        "/Users/kristianolsson/Documents/code/Whereabouts/Sources/Whereabouts/AppDelegate.swift",
+        "/Users/kristianolsson/Documents/code/Whereabouts/Sources/Whereabouts/FlagEmoji.swift",
+        "/Users/kristianolsson/Documents/code/Whereabouts/Sources/Whereabouts/GeoLocator.swift",
+        "/Users/kristianolsson/Documents/code/Whereabouts/Sources/Whereabouts/NetworkMonitor.swift",
+        "/Users/kristianolsson/Documents/code/Whereabouts/Sources/Whereabouts/main.swift"
+      ],
+      "tempsPath" : "/Users/kristianolsson/Documents/code/Whereabouts/.build/arm64-apple-macosx/release/Whereabouts.build",
+      "wholeModuleOptimization" : true
+    }
+  },
+  "swiftFrontendCommands" : {
+
+  },
+  "swiftTargetScanArgs" : {
+    "Whereabouts" : [
+      "/Library/Developer/CommandLineTools/usr/bin/swiftc",
+      "-module-name",
+      "Whereabouts",
+      "-package-name",
+      "whereabouts",
+      "-whole-module-optimization",
+      "-num-threads",
+      "10",
+      "-c",
+      "/Users/kristianolsson/Documents/code/Whereabouts/Sources/Whereabouts/AppDelegate.swift",
+      "/Users/kristianolsson/Documents/code/Whereabouts/Sources/Whereabouts/FlagEmoji.swift",
+      "/Users/kristianolsson/Documents/code/Whereabouts/Sources/Whereabouts/GeoLocator.swift",
+      "/Users/kristianolsson/Documents/code/Whereabouts/Sources/Whereabouts/NetworkMonitor.swift",
+      "/Users/kristianolsson/Documents/code/Whereabouts/Sources/Whereabouts/main.swift",
+      "-I",
+      "/Users/kristianolsson/Documents/code/Whereabouts/.build/arm64-apple-macosx/release/Modules",
+      "-target",
+      "arm64-apple-macosx13.0",
+      "-O",
+      "-j10",
+      "-DSWIFT_PACKAGE",
+      "-module-cache-path",
+      "/Users/kristianolsson/Documents/code/Whereabouts/.build/arm64-apple-macosx/release/ModuleCache",
+      "-parseable-output",
+      "-Xfrontend",
+      "-entry-point-function-name",
+      "-Xfrontend",
+      "Whereabouts_main",
+      "-swift-version",
+      "5",
+      "-F",
+      "/Library/Developer/CommandLineTools/Library/Developer/Frameworks",
+      "-sdk",
+      "/Library/Developer/CommandLineTools/SDKs/MacOSX.sdk",
+      "-g",
+      "-Xcc",
+      "-isysroot",
+      "-Xcc",
+      "/Library/Developer/CommandLineTools/SDKs/MacOSX.sdk",
+      "-Xcc",
+      "-fPIC",
+      "-Xcc",
+      "-g",
+      "-package-name",
+      "whereabouts",
+      "-driver-use-frontend-path",
+      "/Library/Developer/CommandLineTools/usr/bin/swiftc"
+    ]
+  },
+  "targetDependencyMap" : {
+    "Whereabouts" : [
+
+    ]
+  },
+  "testDiscoveryCommands" : {
+
+  },
+  "testEntryPointCommands" : {
+
+  },
+  "traitConfiguration" : {
+    "enableAllTraits" : false
+  },
+  "writeCommands" : {
+    "/Users/kristianolsson/Documents/code/Whereabouts/.build/arm64-apple-macosx/release/Whereabouts.build/sources" : {
+      "alwaysOutOfDate" : false,
+      "inputs" : [
+        {
+          "kind" : "virtual",
+          "name" : "<sources-file-list>"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/kristianolsson/Documents/code/Whereabouts/Sources/Whereabouts/AppDelegate.swift"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/kristianolsson/Documents/code/Whereabouts/Sources/Whereabouts/FlagEmoji.swift"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/kristianolsson/Documents/code/Whereabouts/Sources/Whereabouts/GeoLocator.swift"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/kristianolsson/Documents/code/Whereabouts/Sources/Whereabouts/NetworkMonitor.swift"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/kristianolsson/Documents/code/Whereabouts/Sources/Whereabouts/main.swift"
+        }
+      ],
+      "outputFilePath" : "/Users/kristianolsson/Documents/code/Whereabouts/.build/arm64-apple-macosx/release/Whereabouts.build/sources"
+    },
+    "/Users/kristianolsson/Documents/code/Whereabouts/.build/arm64-apple-macosx/release/Whereabouts.product/Objects.LinkFileList" : {
+      "alwaysOutOfDate" : false,
+      "inputs" : [
+        {
+          "kind" : "virtual",
+          "name" : "<link-file-list>"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/kristianolsson/Documents/code/Whereabouts/.build/arm64-apple-macosx/release/Whereabouts.build/AppDelegate.swift.o"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/kristianolsson/Documents/code/Whereabouts/.build/arm64-apple-macosx/release/Whereabouts.build/FlagEmoji.swift.o"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/kristianolsson/Documents/code/Whereabouts/.build/arm64-apple-macosx/release/Whereabouts.build/GeoLocator.swift.o"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/kristianolsson/Documents/code/Whereabouts/.build/arm64-apple-macosx/release/Whereabouts.build/NetworkMonitor.swift.o"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/kristianolsson/Documents/code/Whereabouts/.build/arm64-apple-macosx/release/Whereabouts.build/main.swift.o"
+        }
+      ],
+      "outputFilePath" : "/Users/kristianolsson/Documents/code/Whereabouts/.build/arm64-apple-macosx/release/Whereabouts.product/Objects.LinkFileList"
+    },
+    "/Users/kristianolsson/Documents/code/Whereabouts/.build/arm64-apple-macosx/release/swift-version--1AB21518FC5DEDBE.txt" : {
+      "alwaysOutOfDate" : true,
+      "inputs" : [
+        {
+          "kind" : "virtual",
+          "name" : "<swift-get-version>"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Library/Developer/CommandLineTools/usr/bin/swiftc"
+        }
+      ],
+      "outputFilePath" : "/Users/kristianolsson/Documents/code/Whereabouts/.build/arm64-apple-macosx/release/swift-version--1AB21518FC5DEDBE.txt"
+    }
+  }
+}

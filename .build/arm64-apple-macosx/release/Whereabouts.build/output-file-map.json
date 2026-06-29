@@ -1,0 +1,32 @@
+{
+  "": {
+    "dependencies": "/Users/kristianolsson/Documents/code/Whereabouts/.build/arm64-apple-macosx/release/Whereabouts.build/Whereabouts.d",
+    "object": "/Users/kristianolsson/Documents/code/Whereabouts/.build/arm64-apple-macosx/release/Whereabouts.build/Whereabouts.o",
+    "swift-dependencies": "/Users/kristianolsson/Documents/code/Whereabouts/.build/arm64-apple-macosx/release/Whereabouts.build/master.swiftdeps"
+  },
+  "/Users/kristianolsson/Documents/code/Whereabouts/Sources/Whereabouts/AppDelegate.swift": {
+    "object": "/Users/kristianolsson/Documents/code/Whereabouts/.build/arm64-apple-macosx/release/Whereabouts.build/AppDelegate.swift.o",
+    "swiftmodule": "/Users/kristianolsson/Documents/code/Whereabouts/.build/arm64-apple-macosx/release/Whereabouts.build/AppDelegate~partial.swiftmodule",
+    "swift-dependencies": "/Users/kristianolsson/Documents/code/Whereabouts/.build/arm64-apple-macosx/release/Whereabouts.build/AppDelegate.swiftdeps"
+  },
+  "/Users/kristianolsson/Documents/code/Whereabouts/Sources/Whereabouts/FlagEmoji.swift": {
+    "object": "/Users/kristianolsson/Documents/code/Whereabouts/.build/arm64-apple-macosx/release/Whereabouts.build/FlagEmoji.swift.o",
+    "swiftmodule": "/Users/kristianolsson/Documents/code/Whereabouts/.build/arm64-apple-macosx/release/Whereabouts.build/FlagEmoji~partial.swiftmodule",
+    "swift-dependencies": "/Users/kristianolsson/Documents/code/Whereabouts/.build/arm64-apple-macosx/release/Whereabouts.build/FlagEmoji.swiftdeps"
+  },
+  "/Users/kristianolsson/Documents/code/Whereabouts/Sources/Whereabouts/GeoLocator.swift": {
+    "object": "/Users/kristianolsson/Documents/code/Whereabouts/.build/arm64-apple-macosx/release/Whereabouts.build/GeoLocator.swift.o",
+    "swiftmodule": "/Users/kristianolsson/Documents/code/Whereabouts/.build/arm64-apple-macosx/release/Whereabouts.build/GeoLocator~partial.swiftmodule",
+    "swift-dependencies": "/Users/kristianolsson/Documents/code/Whereabouts/.build/arm64-apple-macosx/release/Whereabouts.build/GeoLocator.swiftdeps"
+  },
+  "/Users/kristianolsson/Documents/code/Whereabouts/Sources/Whereabouts/NetworkMonitor.swift": {
+    "object": "/Users/kristianolsson/Documents/code/Whereabouts/.build/arm64-apple-macosx/release/Whereabouts.build/NetworkMonitor.swift.o",
+    "swiftmodule": "/Users/kristianolsson/Documents/code/Whereabouts/.build/arm64-apple-macosx/release/Whereabouts.build/NetworkMonitor~partial.swiftmodule",
+    "swift-dependencies": "/Users/kristianolsson/Documents/code/Whereabouts/.build/arm64-apple-macosx/release/Whereabouts.build/NetworkMonitor.swiftdeps"
+  },
+  "/Users/kristianolsson/Documents/code/Whereabouts/Sources/Whereabouts/main.swift": {
+    "object": "/Users/kristianolsson/Documents/code/Whereabouts/.build/arm64-apple-macosx/release/Whereabouts.build/main.swift.o",
+    "swiftmodule": "/Users/kristianolsson/Documents/code/Whereabouts/.build/arm64-apple-macosx/release/Whereabouts.build/main~partial.swiftmodule",
+    "swift-dependencies": "/Users/kristianolsson/Documents/code/Whereabouts/.build/arm64-apple-macosx/release/Whereabouts.build/main.swiftdeps"
+  }
+}

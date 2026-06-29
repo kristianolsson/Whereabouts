@@ -14,6 +14,7 @@ class BootReceiver : BroadcastReceiver() {
 
     override fun onReceive(context: Context, intent: Intent) {
         if (intent.action != Intent.ACTION_BOOT_COMPLETED) return
+        if (!Prefs.isServiceEnabled(context)) return
         Log.d("BootReceiver", "Boot completed — starting FlagService")
         val serviceIntent = Intent(context, FlagService::class.java)
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
