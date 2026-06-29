@@ -42,14 +42,16 @@ class FlagService : Service() {
         const val BROADCAST_UPDATED = "com.kristianolsson.whereabouts.UPDATED"
 
         private const val ALARM_REQUEST_CODE = 42
-        private const val DEBOUNCE_MS = 1_500L
+        private const val DEBOUNCE_MS = 5_000L
+        private const val RETRY_DELAY_MS = 8_000L
+        private const val MAX_RETRIES = 3
         private const val REFRESH_INTERVAL_MS = 30 * 60 * 1_000L
 
         private const val ICON_SIZE_PX = 128
     }
 
     private val handler = Handler(Looper.getMainLooper())
-    private val refreshRunnable = Runnable { doGeoLookup() }
+    private val refreshRunnable = Runnable { doGeoLookup(attempt = 1) }
     private lateinit var networkMonitor: NetworkMonitor
 
     // -------------------------------------------------------------------------
@@ -102,18 +104,20 @@ class FlagService : Service() {
         handler.postDelayed(refreshRunnable, DEBOUNCE_MS)
     }
 
-    private fun doGeoLookup() {
+    private fun doGeoLookup(attempt: Int) {
         Thread {
-            Log.d(TAG, "Starting geo lookup")
+            Log.d(TAG, "Geo lookup attempt $attempt")
             val result = GeoLocator.lookup()
             if (result != null) {
                 Log.d(TAG, "Geo result: ${result.countryCode} / ${result.ip}")
                 Prefs.save(this, result.countryCode, result.ip)
                 updateNotification(result.countryCode)
-                // Notify MainActivity if it is currently visible
                 sendBroadcast(Intent(BROADCAST_UPDATED).apply { setPackage(packageName) })
+            } else if (attempt < MAX_RETRIES) {
+                Log.w(TAG, "Geo lookup failed (attempt $attempt) — retrying in ${RETRY_DELAY_MS}ms")
+                handler.postDelayed({ doGeoLookup(attempt + 1) }, RETRY_DELAY_MS)
             } else {
-                Log.w(TAG, "Geo lookup returned null — keeping cached flag")
+                Log.w(TAG, "Geo lookup failed after $MAX_RETRIES attempts — keeping cached flag")
             }
         }.start()
     }
