@@ -28,20 +28,12 @@ class NetworkMonitor(
             Log.d(TAG, "Network lost: $network")
             onNetworkChange()
         }
-
-        // Fires when switching between networks (e.g. WiFi A → WiFi B) without
-        // losing internet connectivity — onAvailable/onLost don't fire in that case.
-        override fun onCapabilitiesChanged(network: Network, caps: NetworkCapabilities) {
-            if (caps.hasCapability(NetworkCapabilities.NET_CAPABILITY_VALIDATED)) {
-                Log.d(TAG, "Network capabilities changed (validated): $network")
-                onNetworkChange()
-            }
-        }
     }
 
     fun register() {
         val request = NetworkRequest.Builder()
             .addCapability(NetworkCapabilities.NET_CAPABILITY_INTERNET)
+            .addCapability(NetworkCapabilities.NET_CAPABILITY_VALIDATED)
             .build()
         try {
             cm.registerNetworkCallback(request, callback)
