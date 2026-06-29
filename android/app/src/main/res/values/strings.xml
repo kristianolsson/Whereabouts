@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Whereabouts</string>
+    <string name="unknown">Unknown</string>
+    <string name="not_yet_updated">Not yet updated</string>
+    <string name="last_updated">Updated: %1$s</string>
+    <string name="refresh">Refresh</string>
+</resources>
