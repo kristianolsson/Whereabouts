@@ -1,0 +1,11 @@
+# macOS build cache
+.build/
+*.dmg
+
+# Android build output
+android/app/build/
+android/build/
+android/.gradle/
+
+# Claude Code worktrees
+.claude/
