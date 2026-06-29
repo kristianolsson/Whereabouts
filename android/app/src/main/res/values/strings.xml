@@ -5,5 +5,6 @@
     <string name="not_yet_updated">Not yet updated</string>
     <string name="last_updated">Updated: %1$s</string>
     <string name="refresh">Refresh</string>
-    <string name="show_in_status_bar">Show in status bar</string>
+    <string name="show_in_status_bar">Show flag in status bar</string>
+    <string name="toggle_description">Updates automatically when you connect to a VPN or switch networks</string>
 </resources>
